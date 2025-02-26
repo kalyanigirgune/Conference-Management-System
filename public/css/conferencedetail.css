@@ -1,0 +1,76 @@
+/* General Styles */
+body {
+    padding-top: 70px;
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Conference Card */
+.conference-card {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Title */
+.conference-card h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* List Group */
+.list-group {
+    text-align: left;
+    padding: 0;
+}
+
+.list-group-item {
+    font-size: 1rem;
+    padding: 12px 15px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Buttons */
+.btn-primary {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* Centering the button */
+.text-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .conference-card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .conference-card h2 {
+        font-size: 1.5rem;
+    }
+}

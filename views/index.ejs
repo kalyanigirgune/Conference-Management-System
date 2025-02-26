@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+
+<section class="hero-section">
+    <div class="hero-text">
+        <h1>Efficient Conference Management</h1>
+        <p>Streamline Event Registrations, Attendance, and ID Badge Printing</p>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold">Key Features</h2>
+        <p>Designed to simplify conference management for organizers</p>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card h-100 p-4">
+                    <i class="fas fa-calendar-plus feature-icon mb-3"></i>
+                    <h5 class="card-title">Add Conference Details</h5>
+                    <p class="card-text">Easily add and manage conference information, sessions, and schedules.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card h-100 p-4">
+                    <i class="fas fa-envelope-open-text feature-icon mb-3"></i>
+                    <h5 class="card-title">Bulk Emails & Reminders</h5>
+                    <p class="card-text">Send bulk invitations, confirmation emails, and timely reminders.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card h-100 p-4">
+                    <i class="fas fa-qrcode feature-icon mb-3"></i>
+                    <h5 class="card-title">QR Code Attendance</h5>
+                    <p class="card-text">Quick and seamless check-in using QR codes for attendance marking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="upcomingConferences" class="py-5">
+    <div class="container">
+        <h3 class="text-center">Upcoming Conferences</h3>
+        <% let currentDate = new Date(); %>
+        <% let upcoming = conferences.filter(conference => new Date(conference.date) >= currentDate); %>
+        <% if (upcoming.length === 0) { %>
+            <p class="text-center no-conferences">No upcoming conferences.</p>
+        <% } else { %>
+            <div class="row mt-4">
+                <% upcoming.forEach(conference => { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card conference-card">
+                            <img src="<%= conference.imageUrl %>" class="card-img-top" alt="Conference Image">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= conference.title %></h5>
+                                <p class="card-text"><strong>Date:</strong> <%= conference.date %></p>
+                                <p class="card-text"><strong>Location:</strong> <%= conference.location %></p>
+                                <p class="card-text"><%= conference.description %></p>
+                                <a href="/conference/<%= conference._id %>" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-dark text-white text-center">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us!</p>
+        <p>Email: support@eventease.com | Phone: +91 12345 67890</p>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

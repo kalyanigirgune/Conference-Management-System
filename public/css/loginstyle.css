@@ -1,0 +1,73 @@
+/* Global Styles */
+body {
+  background: #f0f8ff;  /* Light Alice Blue */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Container for the login form */
+.login-container {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 30px; /* Reduced padding for a smaller container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 320px; /* Reduced width */
+  width: 80%; /* Set a percentage width for responsiveness */
+  text-align: center;
+}
+
+/* Heading styling */
+h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+  font-size: 1.5rem; /* Reduced font size */
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input styling */
+input[type="email"],
+input[type="password"] {
+  padding: 10px;  /* Reduced padding */
+  margin-bottom: 12px;  /* Reduced margin between inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px; /* Slightly smaller font size */
+}
+
+/* Button styling */
+button {
+  padding: 10px 14px;  /* Adjusted padding for smaller button */
+  background: #007bff;
+  border: none;
+  color: #fff;
+  font-size: 14px; /* Smaller font size for the button */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Link styling */
+a {
+  display: block;
+  margin-top: 12px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 12px; /* Adjusted font size for smaller text */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+

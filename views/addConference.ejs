@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Conference</title>
+    <link rel="stylesheet" href="/css/addConference.css">
+    <script>
+        function toggleAmountField() {
+            var typeSelect = document.getElementById("type");
+            var amountField = document.getElementById("amount");
+
+            if (typeSelect.value === "paid") {
+                amountField.style.display = "block";
+                amountField.setAttribute("required", "required");
+            } else {
+                amountField.style.display = "none";
+                amountField.removeAttribute("required");
+                amountField.value = ""; // Clear the value when hidden
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            toggleAmountField(); // Ensure correct visibility on page load
+            document.getElementById("type").addEventListener("change", toggleAmountField);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Conference</h2>
+        <section class="conference-form">
+            <h3>Add a Conference</h3>
+            <form action="/add-conference" method="POST" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Conference Title" required>
+                
+                <label for="condate">Conference Date:</label>
+                <input type="date" name="date" id="condate" required>
+
+                <input type="text" name="organizer" placeholder="Organization" required>
+                <input type="text" name="location" placeholder="Location" required>
+
+                <label for="type">Type:</label>
+                <select name="type" id="type" required>
+                    <option value="unpaid" <%= (type === 'unpaid') ? 'selected' : '' %>>Unpaid</option>
+                    <option value="paid" <%= (type === 'paid') ? 'selected' : '' %>>Paid</option>
+                </select>
+
+                <input type="number" name="amount" id="amount" placeholder="Amount (if Paid)" min="1" step="any" 
+                       style="display: none;" value="<%= (type === 'paid') ? amount : '' %>">
+                
+                <label for="deaddate">Conference Application Deadline:</label>
+                <input type="date" name="deadline" id="deaddate" required>
+
+                <label for="image">Upload Conference Image:</label>
+                <input type="file" name="image" id="image" accept="image/*" required>
+
+                <button type="submit">Add Conference</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

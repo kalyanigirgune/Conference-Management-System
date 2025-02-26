@@ -1,0 +1,97 @@
+/* Global Styles */
+body {
+    background: #f0f8ff;  /* Light Alice Blue */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* Container for the signup form */
+  .signup-container {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 30px;  /* Reduced padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 320px; /* Smaller width */
+    width: 80%;
+    text-align: center;
+  }
+  
+  /* Heading styling */
+  h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Smaller font size for heading */
+  }
+  
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Input styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;  /* Smaller padding */
+    margin-bottom: 12px;  /* Smaller margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px; /* Slightly smaller font size */
+  }
+  
+  /* Button styling */
+  button {
+    padding: 10px 14px;  /* Adjusted padding */
+    background: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 14px; /* Smaller font size */
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  /* Link styling */
+  a {
+    display: block;
+    margin-top: 12px;  /* Smaller margin between link and form */
+    color: #007bff;
+    text-decoration: none;
+    font-size: 12px; /* Smaller font size for the link */
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .terms {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8em;
+  }
+  
+  .terms input {
+    vertical-align: middle;
+  }
+  
+  .terms a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .terms a:hover {
+    text-decoration: underline;
+  }
+  
+  
+

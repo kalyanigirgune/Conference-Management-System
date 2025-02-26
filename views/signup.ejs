@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/signupstyle.css">
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Sign Up</h1>
+    <form action="/signup" method="POST" onsubmit="return validateSignup(event)">
+      <input type="text" id="username" name="username" placeholder="Username" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <label class="terms">
+        <input type="checkbox" id="terms" name="terms" required>
+        <span class="agree-text">I agree to the</span> 
+        <a href="/terms" onclick="saveFormData()" style="color: blue;">Terms and Conditions</a> and 
+        <a href="/privacy" onclick="saveFormData()" style="color: blue;">Privacy Policy</a>
+      </label>      
+      <button type="submit">Sign Up</button>
+    </form>
+    <a href="/login">Already have an account? Login</a>
+  </div>
+
+  <!-- Client-side validation and local storage script -->
+  <script>
+    // Store form data before navigating away
+    function saveFormData() {
+      localStorage.setItem('signupUsername', document.getElementById('username').value);
+      localStorage.setItem('signupEmail', document.getElementById('email').value);
+      localStorage.setItem('signupPassword', document.getElementById('password').value);
+      localStorage.setItem('signupTerms', document.getElementById('terms').checked);
+    }
+
+    // Restore form data when the page loads
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('username').value = localStorage.getItem('signupUsername') || '';
+      document.getElementById('email').value = localStorage.getItem('signupEmail') || '';
+      document.getElementById('password').value = localStorage.getItem('signupPassword') || '';
+      document.getElementById('terms').checked = localStorage.getItem('signupTerms') === 'true';
+    });
+
+    // Clear stored data upon form submission
+    function validateSignup(event) {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (username.length < 3) {
+        alert('Username must be at least 3 characters long.');
+        event.preventDefault();
+        return false;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        event.preventDefault();
+        return false;
+      }
+
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long.');
+        event.preventDefault();
+        return false;
+      }
+
+      localStorage.removeItem('signupUsername');
+      localStorage.removeItem('signupEmail');
+      localStorage.removeItem('signupPassword');
+      localStorage.removeItem('signupTerms');
+      return true;
+    }
+  </script>
+</body>
+</html>

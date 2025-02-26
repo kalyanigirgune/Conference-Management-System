@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Bulk Email</title>
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Include Quill.js for Rich Text Editing -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.min.js"></script>
+
+  
+</head>
+<body>
+
+    <div class="container">
+        <h2>Send Bulk Email</h2>
+
+        <form id="emailForm" enctype="multipart/form-data">
+            <label for="recipients">Recipients (comma-separated emails):</label>
+            <input type="text" name="recipients" required>
+        
+            <label for="subject">Subject:</label>
+            <input type="text" name="subject" value="Invitation to <%= conferenceTitle %> on <%= conferenceDate %>" required>
+        
+            <label for="message">Message:</label>
+            <div id="editor">
+                <p>Dear Attendee,</p>
+                <p>We are pleased to invite you to the conference "<b><%= conferenceTitle %></b>" organized by <b><%= conferenceOrganizer %></b>.</p>
+                <p>The event is scheduled for <b><%= conferenceDate %></b>.</p>
+                <p>We look forward to your participation.</p>
+                <p>Best Regards,<br><%= conferenceOrganizer %></p>
+            </div>
+        
+            <label for="attachment">Attachment:</label>
+            <input type="file" name="attachment" id="attachment">
+        
+            <button type="submit">Send Emails</button>
+        </form>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var quill = new Quill('#editor', { theme: 'snow' });
+        
+                document.querySelector("#emailForm").addEventListener("submit", async function (event) {
+                    event.preventDefault(); // Prevent default form submission
+        
+                    const formData = new FormData(this);
+                    formData.set("message", quill.root.innerHTML); // Add formatted message content
+        
+                    const response = await fetch('/send-bulk-mail', {
+                        method: 'POST',
+                        body: formData
+                    });
+        
+                    const result = await response.json();
+        
+                    if (result.success) {
+                        alert("Emails have been sent successfully!");
+                        window.location.href = '/dashboard';
+                    } else {
+                        alert("Failed to send emails. Please try again.");
+                    }
+                });
+            });
+        </script>
+        
+    </div>
+
+</body>
+</html>
